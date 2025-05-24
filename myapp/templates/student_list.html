@@ -1,0 +1,18 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+
+<div class="container">
+    <h2>Student List</h2>
+    <a href="{% url 'student_create' %}">➕ Add Student</a>
+    <ul>
+        {% for student in students %}
+        <li>
+            <strong>{{ student.name }}</strong> ({{ student.age }}) -
+            <a href="{% url 'student_update' student.id %}">✏️ Edit</a>
+            <a href="{% url 'student_delete' student.id %}">❌ Delete</a>
+        </li>
+        {% empty %}
+        <p>No students found.</p>
+        {% endfor %}
+    </ul>
+</div>

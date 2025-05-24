@@ -1,0 +1,11 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+
+<div class="container">
+    <h2>Student Form</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">💾 Save</button>
+    </form>
+</div>
