@@ -1,12 +1,23 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirm Delete</title>
+  <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+</head>
+<body>
 
 <div class="container">
-    <h2>Delete Confirmation</h2>
+    <h2 class="main-heading">⚠️ Delete Confirmation</h2>
     <p>Are you sure you want to delete <strong>{{ student.name }}</strong>?</p>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">✅ Confirm Delete</button>
+        <input type="submit" value="✅ Yes, Delete">
     </form>
-    <a href="{% url 'student_list' %}">❌ Cancel</a>
+    <br>
+    <a href="{% url 'student_list' %}" class="btn">↩️ Cancel</a>
 </div>
+
+</body>
+</html>

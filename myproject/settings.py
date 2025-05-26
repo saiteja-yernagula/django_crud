@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -73,16 +74,53 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'mydb',
+#         'USER': 'root',
+#         'PASSWORD': 'kob1wc',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
+
+# mysql://root:FkHtDEbGwCRapqQwZfXhEixiOOienkfz@hopper.proxy.rlwy.net:35775/railway
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mydb',
+        'NAME': 'railway',
         'USER': 'root',
-        'PASSWORD': 'kob1wc',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'PASSWORD': 'FkHtDEbGwCRapqQwZfXhEixiOOienkfz',
+        'HOST': 'hopper.proxy.rlwy.net',
+        'PORT': '35775',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.environ.get('DB_NAME'),
+#         'USER': os.environ.get('DB_USER'),
+#         'PASSWORD': os.environ.get('DB_PASSWORD'),
+#         'HOST': os.environ.get('DB_HOST'),
+#         'PORT': os.environ.get('DB_PORT', '3306'),
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         },
+#     }
+# }
+
+
+# DB_NAME=railway
+# DB_USER=root
+# DB_PASSWORD=FkHtDEbGwCRapqQwZfXhEixiOOienkfz
+# DB_HOST=hopper.proxy.rlwy.net
+# DB_PORT=35775
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
